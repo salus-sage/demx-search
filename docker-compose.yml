@@ -5,12 +5,12 @@ services:
     container_name: tqd-node
     build: .
     ports:
-      - 3000:3000
+      - 3005:3005
     environment:
      - NODE_ENV=local
      - ES_HOST=elasticsearch
-     - NODE_PORT=3000
-     - ELASTIC_URL=http://elasticsearch
+     - NODE_PORT=3005
+     - ELASTIC_URL=http://elasticsearch:9200
     volumes:
       - .:/usr/src/app/quotes
     command: npm run start
