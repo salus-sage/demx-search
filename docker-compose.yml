@@ -4,12 +4,12 @@ services:
     image: node:10.15.3-alpine
     container_name: tqd-node
     build: .
-    #ports:
-      #- 3000:3000
+    ports:
+      - 3000:3000
     environment:
      - NODE_ENV=local
      - ES_HOST=elasticsearch
-     #- NODE_PORT=3000
+     - NODE_PORT=3000
      - ELASTIC_URL=http://elasticsearch
     volumes:
       - .:/usr/src/app/quotes
@@ -30,9 +30,9 @@ services:
       - discovery.type=single-node
     logging:
       driver: none
-    #ports:
-      #- 9300:9300
-      #- 9200:9200
+    ports:
+      - 9300:9300
+      - 9200:9200
 
 volumes:
   esdata: {}
