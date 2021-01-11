@@ -1,0 +1,492 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body {
+    font-family: 'Montserrat', sans-serif !important;
+    background-color: rgb(0,0,0);
+    color: #fff;
+    letter-spacing:2px;
+    word-spacing: 3px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+section {
+   
+    padding-top:25px;
+}
+
+section h2 {
+    margin-bottom: 25px;
+    text-align: center;
+}
+h1, h2, h3, h4 {
+    color: rgb(229, 9, 20) !important;
+    font-weight:700;
+    font-family: 'Noticia Text script=all rev=1', serif;
+    font-style:normal;
+}
+a {
+    text-shadow: none !important;
+    color: rgb(229, 9, 20);
+  
+}
+a:hover {
+    color: #fc0814;
+    text-decoration: none;
+}
+p {
+    font-size: 16px;
+    line-height: 30px;
+}
+
+.logo {
+    width:75px;
+    padding:10px;
+}
+img {
+    width:100%;
+}
+video {
+    width:100%;
+    height:auto;
+    border: 1px solid #333;
+}
+/* header video styles */
+header {
+    position:relative;
+    padding: 20px;
+    height:600px;
+    margin-top: -75px;
+}
+.about-card p {
+    padding:15px;
+}
+.video-container {
+    position: absolute;
+    top:0%;
+    left:0%;
+   min-width: 100%;
+   min-height: 100%;
+   overflow: hidden;
+}
+.video-container video {
+    min-width:100%;
+    min-height:100%;
+    position: absolute;
+    z-index: -1;
+    opacity:0.5;
+    border:none;
+}
+
+header h1 {
+    font-size:50px;
+    color: white !important; 
+   
+    letter-spacing: 10px;
+    font-family:  'Alfa Slab One', serif;
+    text-shadow: 1px 2px 3px #8d8989;
+}
+
+#header-volume-control{
+    width: 50px;
+    padding: 5px;
+    cursor:pointer;
+    z-index:3;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+#app {
+    padding-bottom: 40px;
+}
+.banner-text {
+    margin-top:12%;
+    z-index:4;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    padding:10px;
+    border-radius:15px;
+    letter-spacing: 3px;
+    font-family:  sans-serif;
+    min-width:350px;
+    max-width:500px;
+}
+.banner-text img {
+    width:65px;
+    height: auto;
+    position: absolute;
+    bottom: 0px;
+    padding:15px;
+    margin-left:-34px;
+}
+.video-container .overlay {
+    height: 100%;
+       width: 100%;
+       position: absolute;
+       top: 0px;
+       left: 0px;
+       z-index: 2;
+       opacity: 0.06;
+       background: #fc0814 url("../images/3px-tile.png") top center repeat;
+}
+
+.about-card h2 {
+    text-align: center;
+}
+.about-card {
+    min-width:250px;
+    background-color: #000;
+    width: 482px;
+    height: 765px;
+}
+#about{
+    margin-bottom:30px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    -webkit-hyphens: auto;
+       -moz-hyphens: auto;
+            hyphens: auto;
+}
+
+#app {
+    margin-top: 35px;
+   
+}
+.flex-images{
+    display: grid;
+      /*grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));*/
+     /* grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));*/
+     grid-template-columns: repeat(6, 1fr);
+      grid-gap: 10px;
+      align-items: start;
+      justify-items: center;
+      margin: auto;
+}
+.flex-images img:nth-child(13n+1) {
+  grid-column: span 3;
+  grid-row: span 3;
+  }
+
+/*#app img:nth-child(2) {
+  grid-column: span 3;
+  grid-row: span 2;
+  }*/
+.flex-images img{
+    /*width: 0px;
+    object-fit: scale-down;
+    margin-left:auto;
+    margin-right: auto;*/
+      max-width: 100%;
+      object-fit: cover;
+      min-height: 100%;
+     
+}
+.item {
+    -webkit-transition: transform .2s ease; /* Safari and Chrome */
+       -moz-transition: transform .2s ease; /* Firefox */
+       -ms-transition: transform .2s ease; /* IE 9 */
+       -o-transition: transform .2s ease; /* Opera */
+    transition: transform .2s; /* Animation */
+    overflow:hidden;
+    cursor:pointer;
+
+}
+.item:hover{
+    transform: scale(0.9); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    -webkit-transform:scale(0.9); /* Safari and Chrome */
+       -moz-transform:scale(0.9); /* Firefox */
+       -ms-transform:scale(0.9); /* IE 9 */
+       -o-transform:scale(0.9); /* Opera */
+    /*z-index: 1;*/
+}
+.item:hover .item-caption {
+    max-height:100%;
+    height:auto;
+    transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+.item-caption {
+    max-height:0px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 4px 6px;
+    font-size: 13px;
+    color: #fff;
+    background: #222;
+    background: rgba(0,0,0,.9);
+    transition-property: all;
+    transition-duration: .5s;
+
+}
+.item audio {
+    width:100%;
+}
+.item .item-title {
+    color: rgb(229, 9, 20) !important;
+    font-weight: bold;
+}
+.item .item-provenance{
+    font-size:9px;
+}
+.default-poster {
+     
+    padding:5px;
+    width:100% !important;
+}
+.mast-foot {
+    text-align: center;
+}
+.mast-foot p, .mast-foot ul{
+    font-size:14px;
+    text-align: justify;
+}
+iframe #cirrus-1012_header {
+    background-color: black;
+}
+.list-group-item {
+    background-color: transparent !important;
+}
+#mast-foot-navbar ul {
+    display:flex;
+    list-style: none;
+    padding-left:20px;
+}
+
+#mast-foot-navbar ul li{
+    margin-right:15px;
+}
+
+
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+
+.theme-showcase .navbar .container {
+  width: auto;
+}
+
+
+
+.img-responsive {
+ width:100%;
+}
+.vedio-wrapper {
+        width:100%;
+}
+
+.video-row {
+    display: flex;
+}
+
+.video-column {
+    flex: 33.33%;
+    padding: 15px;
+}
+
+/*
+.image-row {
+    display: flex;
+}
+
+/* Create three equal columns that sits next to each other */
+/*.image-column {
+    flex: 33.33%;
+    padding: 5px;
+}
+*/
+.lg .lg-html5 {
+    display:block !important;
+}
+
+.block-wrapper{
+	width:50%;
+}
+
+.block-spacer{
+	padding: 15px;
+    margin: 4px;
+}
+
+
+
+.mast-head {
+	background: #000 url("../images/background.png") top center no-repeat;
+}
+
+.load-overlay {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 6;
+    opacity: 1;
+    background-color: #000;
+}
+
+.loaded {
+    width:200px;
+    position: absolute;
+    top:40%;
+    left:40%;
+
+}
+[data-id="2120"] img {
+    transform: rotate(-90deg);
+    margin-left:auto;
+    margin-right:auto;
+}
+ 
+/* Eamle search form */
+form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+}
+
+form.example button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+
+form.example button:hover {
+    background: #0b7dda;
+}
+
+form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
+/* HERE ALL CODE RELATED TO MENU */
+
+ /* The Overlay (background) */
+.menu-overlay {
+    /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+    height: 0;
+    width: 100%;
+    position: fixed; /* Stay in place */
+    z-index: 4; /* Sit on top */
+    left: 0;
+    top: 0;
+    background-color: rgb(0,0,0); /* Black fallback color */
+    background-color: rgba(0,0,0, 0.95); /* Black w/opacity */
+    overflow-y: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+    position: relative;
+    top: 25%; /* 25% from the top */
+    width: 100%; /* 100% width */
+    text-align: center; /* Centered text/links */
+    margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+/* The navigation links inside the overlay */
+.menu-overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    /*color: #818181;*/
+    display: block; /* Display block instead of inline */
+    transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+/* When you mouse over the navigation links, change their color */
+.menu-overlay a:hover, .overlay a:focus {
+   /* color: #f1f1f1;*/
+}
+
+/* Position the close button (top right corner) */
+.menu-overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+    .menu-overlay a {font-size: 20px}
+    .menu-overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+    }
+} 
+
+.menu-hamburger span{
+    font-size: 45px;
+    font-weight: normal;
+    z-index: 3;
+    padding:5px;
+}
+
+.menu-btn-pos {
+    position: absolute;
+        right: 5px;
+        top: 5px;
+
+    }
+
+
+/* new menu */
+
+@media (min-width: 768px) {
+  /*.nav.navbar-nav.navbar-center{
+    position: absolute !important;
+    left: 50% !important;
+    transform: translatex(-50%) !important;
+  }*/
+  .navbar-nav {
+      width: 100%;
+      text-align: center;
+    }
+    .navbar-nav > li {
+      float: none;
+      display: inline-block;
+    }
+    
+}
+
+.navbar-sticky {
+    position: -webkit-sticky; /* Safari */
+     position: sticky;
+     top: 0;
+     z-index:1;
+}
+
+.navbar-inverse .navbar-nav>li>a{
+    color: #e8e8e8 !important;
+    font-weight: bold;
+}
+/*MENU css END */
+
+
+
+

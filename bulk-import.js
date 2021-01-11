@@ -11,7 +11,7 @@ async function run () {
   try {
     console.log("trying")
     await client.indices.create({
-      index: 'test-mapping',
+      index: 'new-test',
       body: {
         mappings: {
           properties: {
@@ -50,8 +50,9 @@ async function run () {
 }
   
 
-const campusItems = require('./sample-items.json');
-const body = campusItems.entries.flatMap(doc => [{ index: { _index: 'test-mapping' } }, doc])
+const campusItems = require('./public/assets/docs.collection.json');
+
+const body = campusItems.flatMap(doc => [{ index: { _index: 'test-mapping' } }, doc])
 const { body: bulkResponse } = await client.bulk({ refresh: true, body })
 
 if (bulkResponse.errors) {

@@ -19,18 +19,18 @@
             </form>
         </div>
     </div>
-    <div class="row">
+
+    <div class="row results-summary">
         <p>Found {{ total }} items in {{  took }} milliseconds. </p>
-        <div class="col-md-3" v-for="result in results">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                <!-- display the city name and country  -->
+    </div>
+    <div class="row results-wrap">
+        <div class="item image" v-for="result in results">
+            <div class="">
+                    <img v-bind:src='result._source.thumbnail' class="img-responsive image-item" />
+
+                <div class="caption">
                     {{ result._source.title }}
-                </div>
-                <div class="panel-body">
-                <!-- display the latitude and longitude of the city  -->
-                    <p>{{ result._source.description }}</p>
-                    <img v-bind:src='result._source.thumbnail' class="img thumbnail" />
+                    <p>{{ result._source.sortField }}</p>
                 </div>
             </div>
         </div>
@@ -94,6 +94,12 @@
         color: #3596e0;
         left: initial;
         font-size: 14px;
+    }
+    .results-wrap {
+        display: grid;
+        grid-gap: 5px;
+        grid-template-columns: repeat(auto-fill, minmax(160px,1fr));
+        margin-bottom: 25px;
     }
 </style>
 
