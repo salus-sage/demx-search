@@ -280,7 +280,7 @@
         methods: {
             // make an axios request to the server with the current search query
             search: function() {
-                axios.get("http://127.0.0.1:3001/search?q=" + this.query)
+                axios.get("http://demx-search.test.openrun.net:3005/search?q=" + this.query)
                     .then(response => {
                         this.total = response.data.hits.total.value;
                         this.took = response.data.took
