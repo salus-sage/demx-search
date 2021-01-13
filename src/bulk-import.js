@@ -8,52 +8,60 @@ const client = new Client({
 })*/
 var client= require ('./connection.js');
 
+
 async function run () {
   try {
     console.log("trying")
-    await client.indices.create({
-      index: 'new-test',
-      body: {
-        mappings: {
-          properties: {
-            id: {"type": "string"},
-            title: {"type": "string"},
-            description: {"type": "string"},
-            identifier: {"type": "string"},
-            source: {"type": "string"},
-            creator: {"type": "string"},
-            date: {"type": "string"},
-            collectionId: {"type": "string"},
-             collectionTitle: {"type": "string"},
-             seriesId: {"type": "string"},
-             seriesTitle: {"type": "string"},
-             tags: {"type": "keyword"},
-             rights: {"type": "string"},
-             rightsHolder: {"type": "string"},
-             publisher: {"type": "string"},
-             format: {"type": "string"},
-             type: {"type": "string"},
-             filename: {"type": "string"},
-             featured: {"type": "string"},
-             fileUrl: {"type": "string"},
-             thumbnail: {"type": "string"},
-             language: {"type": "string"},
-             sortField: {"type": "string"},
-             fileExt: {"type": "string"},
-             _by: {"type": "string"},
-             _mby: {"type": "string"}
+    await client.indices.exists({
+      index: 'campus'
+     }).then(function (exists) {
+      if (!exists) {
+        client.indices.create({
+          index: 'campus',
+          body: {
+            mappings: {
+              properties: {
+                id: {"type": "string"},
+                title: {"type": "string"},
+                description: {"type": "string"},
+                identifier: {"type": "string"},
+                source: {"type": "string"},
+                creator: {"type": "string"},
+                date: {"type": "string"},
+                collectionId: {"type": "string"},
+                 collectionTitle: {"type": "string"},
+                 seriesId: {"type": "string"},
+                 seriesTitle: {"type": "string"},
+                 tags: {"type": "keyword"},
+                 rights: {"type": "string"},
+                 rightsHolder: {"type": "string"},
+                 publisher: {"type": "string"},
+                 format: {"type": "string"},
+                 type: {"type": "string"},
+                 filename: {"type": "string"},
+                 featured: {"type": "string"},
+                 fileUrl: {"type": "string"},
+                 thumbnail: {"type": "string"},
+                 language: {"type": "string"},
+                 sortField: {"type": "string"},
+                 fileExt: {"type": "string"},
+                 _by: {"type": "string"},
+                 _mby: {"type": "string"}
+              }
+            }
           }
-        }
-      }
-    }, { ignore: [400] })
+        }, { ignore: [400] })
+      } else {
+        console.log("Index already exists");
+      }})
 } catch (err) {
   console.log(err, "error creating");
 }
   
 
-const campusItems = require('./public/assets/docs.collection.json');
+const campusItems = require('./public/assets/images.collection.json');
 
-const body = campusItems.flatMap(doc => [{ index: { _index: 'test-mapping' } }, doc])
+const body = campusItems.flatMap(doc => [{ index: { _index: 'campus' } }, doc])
 const { body: bulkResponse } = await client.bulk({ refresh: true, body })
 
 if (bulkResponse.errors) {
@@ -78,7 +86,7 @@ if (bulkResponse.errors) {
     console.log(erroredDocuments)
   }
 
-  const { body: count } = await client.count({ index: 'test-mapping' })
+  const { body: count } = await client.count({ index: 'campus' })
   console.log(count)
 }
 
