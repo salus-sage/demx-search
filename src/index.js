@@ -50,12 +50,15 @@ app.get('/search', function (req, res){
   // declare the query object to search elastic search and return only 200 results from the first result found.
   // also match any data where the name is like the query string sent in
   //let searchInTitle = functions.inTitle(0, 20, req.query['q']);
-  let searchInAllFields = functions.inAll(0, 20, req.query['q'], "multi_match");
+  var size = 20;
+  var from = parseInt((Number(req.query['page']) - 1) * size);
+  console.log(req.query['page'], from, size, "request");
+
+  let searchInAllFields = functions.inAll(from, size, req.query['q'], "multi_match");
   
   // perform the actual search passing in the index, the search query and the type
-  client.search({index:'campus',  body:searchInAllFields})
+  client.search({index:'test-mapping',  body:searchInAllFields})
   .then(results => {
-    console.log(results);
     res.send(results.body);
   })
   .catch(err=>{

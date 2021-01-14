@@ -22,8 +22,8 @@ function queryAll (from, size, query, action) {
 		"query": query
 	}
 	let body = {
-	  "from": 0,
-	  "size": 20,
+	  "from": from,
+	  "size": size,
 	  "query": queryBuilder
 	}
 

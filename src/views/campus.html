@@ -170,7 +170,13 @@
            </div> 
             
             </div>
-
+            <paginate
+                :page-count="pageCount"
+                 container-class="pagination"
+                 prev-text="prev"
+                 next-text="next"
+                :click-handler="paginateClick">
+              </paginate>
             </div>
         </div>
     </div>
@@ -246,7 +252,7 @@
 </style>
 
 <script type="text/javascript">
-
+    Vue.component('paginate', VuejsPaginate)
     // create a new Vue instance
     var app = new Vue({
         el: '#search-app',
@@ -255,7 +261,9 @@
             results: [],
             total: 0,
             took: 0,
-            query: ''
+            query: '',
+            pageCount: 0,
+            page: 1
         },
         filters: {
             // function escape html chars
@@ -272,11 +280,12 @@
         methods: {
             // make an axios request to the server with the current search query
             search: function() {
-                axios.get("http://demx-search.test.openrun.net:3005/search?q=" + this.query)
+                axios.get("http://localhost:3005/search?q=" + this.query + "&" + "page=" + this.page)
                     .then(response => {
                         this.total = response.data.hits.total.value;
                         this.took = response.data.took
                         this.results = response.data.hits.hits;
+                        this.pageCount = parseInt(response.data.hits.total.value / 20);
                         //console.log(response, this.results);
                     })
                     .finally(() => {
@@ -293,13 +302,22 @@
                           preload: 2
                         }) 
                     })
+            },
+            paginateClick: function(e) {
+              console.log("clicked", e)
+              this.page = e
+              let newUrl = window.location.toString().split('&')[0] + "&page=" + this.page;
+              window.history.pushState({}, null, newUrl)
             }
         },
         // declare Vue watchers
         watch: {
             // watch for change in the query string and recall the search method
             query: function() {
-                this.search();
+                this.search()
+            },
+            page: function() {
+              this.search()
             }
         },
 
@@ -307,7 +325,8 @@
             console.log($, $("#items-grid-wrap"), "is it jQuery");
 
             if(window.location.toString().indexOf("?") > 0){
-                this.query = window.location.toString().split('?')[1].split('=')[1] || '';
+                this.query = window.location.toString().split('?')[1].split('=')[1].split('&')[0] || '';
+                this.page = window.location.toString().split('?')[1].split('=')[2] || 1;
             }
 
 

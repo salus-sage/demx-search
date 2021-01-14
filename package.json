@@ -5,6 +5,7 @@
   "main": "load_items.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "pm2-runtime start ./src/index.js --name node_app --watch",
     "start": "pm2-runtime start ./src/index.js --name node_app",
     "stop": "pm2-runtime stop node_app "
   },
