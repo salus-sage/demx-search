@@ -310,7 +310,7 @@
             },
             paginateClick: function(e) {
               console.log("clicked", e)
-              this.page = e
+              this.page = parseInt(e)
               let newUrl = window.location.toString().split('&')[0] + "&page=" + this.page;
               window.history.pushState({}, null, newUrl)
             }
@@ -331,7 +331,7 @@
 
             if(window.location.toString().indexOf("?") > 0){
                 this.query = window.location.toString().split('?')[1].split('=')[1].split('&')[0] || '';
-                this.page = window.location.toString().split('?')[1].split('=')[2] || 1;
+                this.page = parseInt(window.location.toString().split('?')[1].split('=')[2]) || 1;
             }
 
 
