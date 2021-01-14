@@ -126,7 +126,7 @@
             <div class="item-bindings"  v-for="result in results">
                 <!-- If item is image -->
                    <div class="item image"
-                        v-if="result._source.fileExt === 'jpg'"
+                        v-if="result._source.fileExt === 'jpg' || result._source.fileExt === 'JPG'"
                         v-bind:data-id = "result._source.id"  
                         v-bind:data-sub-html = "result._source.metaHTML | sanitizeHTML" 
                         v-bind:title="result._source.title" 
@@ -165,8 +165,37 @@
                      </small>
                </div>
            </div>
+           <div class="item video" 
+                v-else-if="result._source.fileExt === 'mp4'"
+                    >
+            <div style="display:none;" v-bind:id="result._source.id">
+                <video class="lg-video-object lg-html5" v-bind:poster="result._source.thumbnail" controls preload="none">
+                    <source v-bind:src="result._source.fileUrl" type="video/mp4">
+                     Your browser does not support HTML5 video.
+                </video>
+            </div>
+
+            <div v-bind:data-html="result._source.id" v-bind:data-id="result._source.id" v-bind:data-type="result._source.type"  v-bind:data-sub-html = "result._source.metaHTML | sanitizeHTML"  >
+            
+                 <img v-bind:src="result._source.thumbnail" class="video-icon" />
+                <div class="item-caption" style="max-height:100%;">
+                <a v-bind:href="result._source.fileUrl" >
+                  <h3 class="item-title">
+                    {{ result._source.title }}
+                  </h3>
+                  </a>
+                  
+                 
+                  <small> 
+                  Date: {{ result._source.sortField }}
+                  </small>
+                  
+                </div>
+
+            </div>
+           </div>
            <div v-else>
-            <p>nothing</p>
+            {{ result._source.fileExt }}
            </div> 
             
             </div>
@@ -285,7 +314,7 @@
         methods: {
             // make an axios request to the server with the current search query
             search: function() {
-                axios.get("http://localhost:3005/search?q=" + this.query + "&" + "page=" + this.page)
+                axios.get("/search?q=" + this.query + "&" + "page=" + this.page)
                     .then(response => {
                         this.total = response.data.hits.total.value;
                         this.took = response.data.took
