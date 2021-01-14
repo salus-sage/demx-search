@@ -57,7 +57,7 @@ app.get('/search', function (req, res){
   let searchInAllFields = functions.inAll(from, size, req.query['q'], "multi_match");
   
   // perform the actual search passing in the index, the search query and the type
-  client.search({index:'test-mapping',  body:searchInAllFields})
+  client.search({index:'campus-collection',  body:searchInAllFields})
   .then(results => {
     res.send(results.body);
   })

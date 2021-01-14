@@ -13,11 +13,11 @@ async function run () {
   try {
     console.log("trying")
     await client.indices.exists({
-      index: 'campus'
+      index: 'campus-collection'
      }).then(function (exists) {
       if (!exists) {
         client.indices.create({
-          index: 'campus',
+          index: 'campus-collection',
           body: {
             mappings: {
               properties: {
@@ -59,9 +59,9 @@ async function run () {
 }
   
 
-const campusItems = require('./public/assets/images.collection.json');
+const campusItems = require('./public/assets/cartoons.collection.json');
 
-const body = campusItems.flatMap(doc => [{ index: { _index: 'campus' } }, doc])
+const body = campusItems.flatMap(doc => [{ index: { _index: 'campus-collection' } }, doc])
 const { body: bulkResponse } = await client.bulk({ refresh: true, body })
 
 if (bulkResponse.errors) {
@@ -86,7 +86,7 @@ if (bulkResponse.errors) {
     console.log(erroredDocuments)
   }
 
-  const { body: count } = await client.count({ index: 'campus' })
+  const { body: count } = await client.count({ index: 'campus-collection' })
   console.log(count)
 }
 
