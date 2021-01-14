@@ -52,7 +52,7 @@ app.get('/search', function (req, res){
   //let searchInTitle = functions.inTitle(0, 20, req.query['q']);
   var size = 20;
   var from = parseInt((Number(req.query['page']) - 1) * size);
-  console.log(req.query['page'], from, size, "request");
+  //console.log(req.query['page'], from, size, "request");
 
   let searchInAllFields = functions.inAll(from, size, req.query['q'], "multi_match");
   
