@@ -166,7 +166,7 @@
                </div>
            </div>
            <div class="item video" 
-                v-else-if="result._source.fileExt === 'mp4'"
+                v-else-if="result._source.fileExt === 'mp4' || result._source.fileExt === 'MP4'"
                     >
             <div style="display:none;" v-bind:id="result._source.id">
                 <video class="lg-video-object lg-html5" v-bind:poster="result._source.thumbnail" controls preload="none">
