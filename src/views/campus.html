@@ -120,7 +120,7 @@
         <div class="row">
 
         </div>
-        <div class="row">
+        <div class="row" v-if="query">
             <p>Found {{ total }} items in {{  took }} milliseconds. </p>
         <div id="items-grid-wrap">
             <div class="item-bindings"  v-for="result in results">
@@ -209,7 +209,8 @@
                  container-class="pagination"
                  prev-text="prev"
                  next-text="next"
-                :click-handler="paginateClick">
+                :click-handler="paginateClick"
+                v-if="pageCount > 1 ">
               </paginate>
         </div>
     </div>
