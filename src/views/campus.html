@@ -167,7 +167,7 @@
            </div>
            <div class="item video" 
                 v-else-if="result._source.fileExt === 'mp4' || result._source.fileExt === 'MP4'"
-                    >
+                v-bind:data-html="getHash(result._source.id)" v-bind:data-id="result._source.id" v-bind:data-type="result._source.type"  v-bind:data-sub-html = "result._source.metaHTML | sanitizeHTML" >
             <div style="display:none;" v-bind:id="result._source.id">
                 <video class="lg-video-object lg-html5" v-bind:poster="result._source.thumbnail" controls preload="none">
                     <source :src="validateUrl(result._source.fileUrl)" type="video/mp4">
@@ -175,7 +175,7 @@
                 </video>
             </div>
 
-            <div v-bind:data-html="getHash(result._source.id)" v-bind:data-id="result._source.id" v-bind:data-type="result._source.type"  v-bind:data-sub-html = "result._source.metaHTML | sanitizeHTML"  >
+            <div class="grid-item">
             
                  <img v-bind:src="result._source.thumbnail" class="video-icon" />
                 <div class="item-caption" style="max-height:100%;">
