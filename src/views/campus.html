@@ -146,7 +146,7 @@
                    </div>
                </div> 
                <div class="item link"
-                    v-else-if="result._source.fileExt === 'pdf' || result._source.fileExt === 'docx'"
+                    v-else-if="result._source.fileExt === 'pdf' || result._source.fileExt === 'docx' || result._source.format === 'pdf'"
                     v-bind:data-id = "result._source.id"  
                     v-bind:data-sub-html = "result._source.metaHTML | sanitizeHTML" 
                     v-bind:title="result._source.title" 
