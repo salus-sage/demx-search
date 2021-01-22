@@ -24,9 +24,7 @@ function queryAll (from, size, query, action) {
 	let body = {
 	  "from": from,
 	  "size": size,
-	  "query": queryBuilder,
-	  "sort": [
-	  	{ "title": "asc"}]
+	  "query": queryBuilder
 	}
 
 	return body;
